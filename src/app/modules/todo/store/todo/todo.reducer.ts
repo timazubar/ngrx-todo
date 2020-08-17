@@ -8,7 +8,7 @@ export interface TodoState {
   todoList: Todo[];
 }
 
-const initialState = {
+const initialState: TodoState = {
   idInc: 1,
   todoList: [],
 };
@@ -19,16 +19,17 @@ export const todoReducer = (state = initialState, action: TodoActions) => {
       return {
         ...state,
         idInc: state.idInc + 1,
-        todoList: {
+        todoList: [
           ...state.todoList,
-          id: state.idInc,
-          name: action.payload.name,
-          completed: false,
-        },
+          {
+            id: state.idInc,
+            name: action.payload.name,
+            completed: false,
+          },
+        ],
       };
 
     default:
       return state;
   }
-  return state;
 };

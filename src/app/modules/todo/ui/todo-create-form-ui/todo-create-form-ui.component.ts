@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-create-form-ui',
@@ -18,8 +19,7 @@ export class TodoCreateFormUiComponent implements OnInit {
   onCreate(): void {
     if (this.name) {
       this.create.emit(this.name);
+      this.name = '';
     }
-
-    this.name = '';
   }
 }
