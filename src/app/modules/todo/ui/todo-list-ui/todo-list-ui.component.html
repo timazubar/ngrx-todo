@@ -1,11 +1,13 @@
 <ul>
   <li *ngFor="let todo of todoList">
-    <label>
-      <input type="checkbox" [checked]="todo.completed" />
-      <span *ngIf="!todo.completed">{{ todo.name }}</span>
-      <del *ngIf="todo.completed">
-        <span>{{ todo.name }}</span>
-      </del>
-    </label>
+    <app-todo-list-item-ui
+      [todo]="todo"
+      (toggle)="onToggle(todo.id)"
+      (delete)="onDelete(todo.id)"
+    ></app-todo-list-item-ui>
+    <app-todo-item-edit-ui
+      [todo]="todo"
+      (edit)="onEdit(todo.id, $event)"
+    ></app-todo-item-edit-ui>
   </li>
 </ul>
